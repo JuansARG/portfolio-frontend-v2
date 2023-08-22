@@ -55,7 +55,7 @@ const userData = toRef(props, 'userData');
 
 <style scoped lang="scss">
 .row {
-    height: max-content;
+    min-height: 100vh;
     color: white;
     }
 .img-container {
