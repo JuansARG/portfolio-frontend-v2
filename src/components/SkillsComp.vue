@@ -37,6 +37,9 @@ orderSkills();
 .container p {
     font-size: 4rem !important;
 }
+.row{
+    min-height: 100vh;
+}
 
 
 /* Media queries */
