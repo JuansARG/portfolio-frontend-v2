@@ -8,8 +8,8 @@ export const login = async() => {
     if ( !token ) {
 
         const { data: loginResponse } = await backendApi.post<AuthResponse>('/api/v1/auth/login', {
-            email: 'juansarmientog96@gmail.com',
-            password: '39342021'
+            email: '',
+            password: ''
         }, {
             withCredentials: true,
         });
