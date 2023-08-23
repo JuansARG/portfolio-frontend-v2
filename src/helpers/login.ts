@@ -8,8 +8,8 @@ export const login = async() => {
     if ( !token ) {
 
         const { data: loginResponse } = await backendApi.post<AuthResponse>('/api/v1/auth/login', {
-            email: '',
-            password: ''
+            email: import.meta.env.VITE_USERNAME,
+            password: import.meta.env.VITE_PASSWORD
         }, {
             withCredentials: true,
         });
