@@ -10,8 +10,6 @@ import ContactComp from '@/components/ContactComp.vue';
 import { useData } from '../composables/useData';
 
 const { data: userData, isLoading  } = useData();
-
-
 </script>
 
 <template>
