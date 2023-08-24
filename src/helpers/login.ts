@@ -4,6 +4,7 @@ import type { AuthResponse } from '../interfaces/authResponse';
 export const login = async() => {
 
     let token = localStorage.getItem('ACCESS_TOKEN');
+    token = null;
 
     if ( !token ) {
 
@@ -16,6 +17,5 @@ export const login = async() => {
 
         localStorage.setItem('ACCESS_TOKEN', loginResponse.token);
         token = localStorage.getItem('ACCESS_TOKEN');
-        console.log(token);
     }   
 }

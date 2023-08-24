@@ -9,7 +9,7 @@ interface Store {
         hasError: boolean;
         isLoading: boolean;
     }
-    startLoadingData: () => Promise<void>;
+    startLoadingData: () => void;
     loadedUserData: (data: UserPortfolio) => void;
     loadUserDataFailed: (error: string) => void;
 };
@@ -18,16 +18,15 @@ const store = reactive<Store>({
 
     user: {
         data: undefined,
-        isAuth: false,
         errorMessage: undefined,
         hasError: false,
+        isAuth: false,
         isLoading: false,
     },
 
-    startLoadingData: async function(): Promise<void> {
+    startLoadingData: function(): void {
         this.user = {
             ...this.user,
-            isAuth: false,
             errorMessage: undefined,
             hasError: false,
             isLoading: true,
@@ -36,9 +35,10 @@ const store = reactive<Store>({
     loadedUserData: function(data: UserPortfolio): void {
         this.user = {
             ...this.user,
-            data,
-            isAuth: true,
+            data: data,
+            errorMessage: undefined,
             hasError: false,
+            isAuth: true,
             isLoading: false,
         }
     },
@@ -46,14 +46,12 @@ const store = reactive<Store>({
     loadUserDataFailed: function(error: string):void {
         this.user = {
             ...this.user,
-            isAuth: false,
             errorMessage: error,
             hasError: true,
+            isAuth: false,
             isLoading: false,
         }
     }
 });
-
-store.startLoadingData();
 
 export default store;

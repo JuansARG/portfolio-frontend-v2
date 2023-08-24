@@ -19,16 +19,11 @@ const form = ref<Form>({
 });
 
 const submit = (formData: Form) => {
-
     waiting.value = true;
 
     submitMail(formData)
         .then(() => {
-
-            toast("¡El email ha sido enviado, revisa tu correo!", {
-                autoClose: 5000,
-                position: toast.POSITION.BOTTOM_RIGHT
-            })
+            toast("¡El email ha sido enviado, revisa tu correo!");
 
             errors.value = false;
             waiting.value = false;
@@ -39,6 +34,8 @@ const submit = (formData: Form) => {
                 message: '',
             }
         }).catch(() => {
+            toast("¡Ups! Algo salió mal. Por favor, inténtalo de nuevo más tarde.");
+
             errors.value = true;
             waiting.value = false;
         });
@@ -58,16 +55,18 @@ const submit = (formData: Form) => {
                         class="form-control" 
                         id="floatingInputName" 
                         placeholder="name@example.com"
-                        v-model="form.name">
+                        v-model="form.name"
+                        required>
                     <label for="floatingInputName">Nombre:</label>
                 </div>
                 <div class="form-floating mb-3 w-100 text-black-50 fw-bold">
                     <input 
-                        type="text" 
+                        type="email" 
                         class="form-control" 
                         id="floatingInputEmail" 
                         placeholder="name@example.com"
-                        v-model="form.email">
+                        v-model="form.email"
+                        required>
                     <label for="floatingInputEmail">Email:</label>
                 </div>
                 <div class="form-floating mb-3 w-100 text-black-50 fw-bold">
@@ -76,7 +75,8 @@ const submit = (formData: Form) => {
                         class="form-control" 
                         id="floatingInputSubject" 
                         placeholder="name@example.com"
-                        v-model="form.subject">
+                        v-model="form.subject"
+                        required>
                     <label for="floatingInputSubject">Asunto:</label>
                 </div>
                 <div class="form-floating w-100 text-black-50 fw-bold">
@@ -84,7 +84,8 @@ const submit = (formData: Form) => {
                         placeholder="Leave a comment here" 
                         id="floatingTextareaMessage" 
                         style="height: 100px"
-                        v-model="form.message"/>
+                        v-model="form.message"
+                        required/>
                     <label for="floatingTextareaMessage">Mensaje:</label>
                 </div>
 

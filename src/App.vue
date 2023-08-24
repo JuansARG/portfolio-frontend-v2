@@ -3,7 +3,7 @@ import IndexView from '@/page/IndexView.vue';
 </script>
 
 <template>
-  <IndexView/>
+    <IndexView />
 </template>
 
 <style scoped lang="scss">
