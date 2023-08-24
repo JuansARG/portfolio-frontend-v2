@@ -1,7 +1,7 @@
 import { computed, watchEffect } from 'vue';
 import { useQuery } from "@tanstack/vue-query"
 import { getUserData } from '../helpers/getUserData';
-import { initialUserData } from '../data/initialUserData';
+// import { initialUserData } from '../data/initialUserData';
 import { login } from "@/helpers/login";
 import store from "@/store/store";
 
@@ -10,17 +10,19 @@ export const useData = () => {
     const { isError } = useQuery({
         queryKey: ['data'],
         queryFn: async() => {
-            console.log('refetch ?')
             store.startLoadingData();
             await login();
             return await getUserData();
         },
-        initialData: initialUserData,
         select(data) {
             store.loadedUserData(data);
         },
-        refetchOnMount: false,
-        refetchOnWindowFocus: false,
+        cacheTime: 1000 * 180,
+        retry: 2,
+        refetchOnWindowFocus: true,
+        // initialData: initialUserData,
+        // placeholderData: initialUserData,
+
     });
 
     watchEffect(() => {

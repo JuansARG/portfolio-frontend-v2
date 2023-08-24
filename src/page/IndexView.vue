@@ -12,6 +12,7 @@ import ErrorComp from '@/components/ErrorComp.vue';
 import { useData } from '../composables/useData';
 
 const { data, hasError, errorMessage, isLoading } = useData();
+
 </script>
 
 <template>

@@ -11,16 +11,7 @@ import bootstrap from 'bootstrap/dist/js/bootstrap.js';
 
 const app = createApp(App);
 
-VueQueryPlugin.install(app, {
-    queryClientConfig: {
-        defaultOptions: {
-            queries: {
-                cacheTime: 1000 * 180
-            }
-        }
-    }
-})
-
+app.use(VueQueryPlugin);
 app.use(bootstrap);
 app.use(
     Vue3Toasity,
@@ -29,5 +20,4 @@ app.use(
         position: 'bottom-right'
     } as ToastContainerOptions,
 );
-
 app.mount('#app');
