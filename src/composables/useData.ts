@@ -1,7 +1,7 @@
 import { computed, watchEffect } from 'vue';
 import { useQuery } from "@tanstack/vue-query"
 import { getUserData } from '../helpers/getUserData';
-// import { initialUserData } from '../data/initialUserData';
+import { initialUserData } from '../data/initialUserData';
 import { login } from "@/helpers/login";
 import store from "@/store/store";
 
@@ -15,19 +15,17 @@ export const useData = () => {
             return await getUserData();
         },
         select(data) {
-            store.loadedUserData(data);
+            store.loadedUserData(data!);
         },
         cacheTime: 1000 * 180,
-        retry: 2,
-        refetchOnWindowFocus: true,
-        // initialData: initialUserData,
-        // placeholderData: initialUserData,
-
+        retry: 1,
+        refetchOnWindowFocus: false,
     });
 
     watchEffect(() => {
         if(isError.value) {
-            store.loadUserDataFailed('¡Ups! Algo salió mal. Por favor, inténtalo de nuevo más tarde.')
+            store.loadedUserData(initialUserData);
+            // store.loadUserDataFailed('¡Ups! Algo salió mal. Por favor, inténtalo de nuevo más tarde.')
         }    
     })
 

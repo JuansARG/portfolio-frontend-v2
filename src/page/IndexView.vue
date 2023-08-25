@@ -56,7 +56,6 @@ main, .container-isLoading, .container-isError {
 
 .container-isLoading, .container-isError{
     min-height: 79.2vh;
-    width: 100vw;
 }
 
 /* Media queries */
@@ -66,10 +65,9 @@ main, .container-isLoading, .container-isError {
     }
 }
 
-
 @media screen and (min-width: 1023px) {
     .container-isLoading, .container-isError{
-        min-height: 78.7vh;
+        min-height: 77.1vh;
     }
 }
 </style>
